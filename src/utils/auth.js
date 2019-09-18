@@ -1,3 +1,4 @@
+//存取修改后台返回的token或session_id
 import Cookies from 'js-cookie'
 
 const TokenKey = 'Admin-Token'

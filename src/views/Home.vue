@@ -8,14 +8,22 @@
 <script>
 // @ is an alias to /src
 import HelloWorld from "@/components/HelloWorld.vue";
-import{test} from "@/api/home";
+import { test } from "@/api/home";
+import { getToken } from "@/utils/auth.js";
+import { mapGetters } from "vuex";
 export default {
   name: "home",
   components: {
     HelloWorld
   },
-  created() {console.log('test :', test);
-    test()
+  computed: {
+    ...mapGetters(['testInfo'])
+  },
+  created() {
+    test().then(res => {
+      console.log("axios的测试数据 :", res);
+      console.log("vuex的测试数据 :", this.testInfo);
+    });
   }
 };
 </script>

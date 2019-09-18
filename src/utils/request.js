@@ -3,7 +3,7 @@ import { MessageBox, Message } from 'element-ui'
 
 const service = axios.create({
   //默认请求路径
-  baseURL: process.env.VUE_APP_BASE_URL,// url = base url + request url
+  baseURL:process.env.VUE_APP_PROXY?null: process.env.VUE_APP_BASE_URL,// url = base url + request url
 
   //请求多久延时
   timeout: 5000, 
@@ -15,29 +15,27 @@ const service = axios.create({
 })
 
 // 请求拦截---请求前
-service.interceptors.request.use(
-  config => {
+// service.interceptors.request.use(
+//   config => {
 
-  },
-  error => {
+//   },
+//   error => {
 
-  }
-)
+//   }
+// )
 
 // 请求拦截---请求后
 service.interceptors.response.use(
 
   response => {
     const res = response.data
-    // if the custom code is not 20000, it is judged as an error.
-    if (res.code !== 20000) {
+    // 根据后台的code判断请求状态
+    if (res.message.code !== 9) {
       Message({
         message: res.message || 'Error',
         type: 'error',
         duration: 5 * 1000
       })
-
-      // 50008: Illegal token; 50012: Other clients logged in; 50014: Token expired;
       if (res.code === 50008 || res.code === 50012 || res.code === 50014) {
         // to re-login
         MessageBox.confirm('You have been logged out, you can cancel to stay on this page, or log in again', 'Confirm logout', {
@@ -56,7 +54,7 @@ service.interceptors.response.use(
     }
   },
   error => {
-    console.log('err' + error) // for debug
+    console.log('err' + error) 
     Message({
       message: error.message,
       type: 'error',
