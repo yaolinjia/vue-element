@@ -26,8 +26,7 @@ module.exports = {
   configureWebpack: () => {}, // CSS 相关选项
   css: {
     // 将组件内部的css提取到一个单独的css文件（只用在生产环境）
-    // 也可以是传递给 extract-text-webpack-plugin 的选项对象
-    extract: true, 
+    extract: process.env.NODE_ENV!=='development', 
     sourceMap: false, 
     loaderOptions: {},
     modules: false
