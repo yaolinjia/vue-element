@@ -13,21 +13,27 @@ const service = axios.create({
   //   'Content-Type': 'application/json'
   // }
 })
-
+//加载动画
+let loadingInstance = Loading.service();
 // 请求拦截---请求前
-// service.interceptors.request.use(
-//   config => {
+service.interceptors.request.use(
+  config => {
+    //启用加载
+    loadingInstance
+    return config;//避免报错
+  },
+  error => {
 
-//   },
-//   error => {
-
-//   }
-// )
+  }
+)
 
 // 请求拦截---请求后
 service.interceptors.response.use(
 
-  response => {
+  response => {   
+    //关闭加载动画
+    loadingInstance.close();
+    
     const res = response.data
     // 根据后台的code判断请求状态
     if (res.message.code !== 9) {
