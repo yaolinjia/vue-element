@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import state from './state'
+import mutations from './mutations'
 import getters from './getters'
+import actions from './actions'
 //数据持久化
 import persistedState from 'vuex-persistedstate'
 
@@ -18,8 +21,11 @@ const modules = modulesFiles.keys().reduce((modules, modulePath) => {
 
 const store = new Vuex.Store({
   plugins: [persistedState()],
+  state,
+  mutations,
+  getters,
+  actions,
   modules,
-  getters
 })
 
 export default store
