@@ -33,27 +33,29 @@ service.interceptors.response.use(
   response => {   
     //关闭加载动画
     loadingInstance.close();
-    
+    //请求成功的code码
+    const succeedCode=[9,6]
+
     const res = response.data
     // 根据后台的code判断请求状态
-    if (res.message.code !== 9) {
+    if (!succeedCode.includes(res.message.code)) {
       Message({
         message: res.message || 'Error',
         type: 'error',
         duration: 5 * 1000
       })
-      if (res.message.code === 50008 || res.message.code === 50012 || res.message.code === 50014) {
-        // to re-login
-        MessageBox.confirm('You have been logged out, you can cancel to stay on this page, or log in again', 'Confirm logout', {
-          confirmButtonText: 'Re-Login',
-          cancelButtonText: 'Cancel',
-          type: 'warning'
-        }).then(() => {
-          store.dispatch('user/resetToken').then(() => {
-            location.reload()
-          })
-        })
-      }
+      // if (res.message.code === 50008 || res.message.code === 50012 || res.message.code === 50014) {
+      //   // to re-login
+      //   MessageBox.confirm('You have been logged out, you can cancel to stay on this page, or log in again', 'Confirm logout', {
+      //     confirmButtonText: 'Re-Login',
+      //     cancelButtonText: 'Cancel',
+      //     type: 'warning'
+      //   }).then(() => {
+      //     store.dispatch('user/resetToken').then(() => {
+      //       location.reload()
+      //     })
+      //   })
+      // }
       return Promise.reject(new Error(res.message || 'Error'))
     } else {
       return res
