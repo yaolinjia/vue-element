@@ -14,12 +14,12 @@ const service = axios.create({
   // }
 })
 //加载动画
-let loadingInstance = Loading.service();
+let loadingInstance;
 // 请求拦截---请求前
 service.interceptors.request.use(
   config => {
     //启用加载
-    loadingInstance
+    loadingInstance= Loading.service()
     return config;//避免报错
   },
   error => {
