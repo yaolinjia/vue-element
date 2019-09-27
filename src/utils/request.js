@@ -41,7 +41,6 @@ service.interceptors.response.use(
 
     if (succeedCode.includes(res.message.code)) {
       return res
-
     } else if (msgCode.includes(res.message.code)) {
       Message({
         message: res.message.msg || 'success',
