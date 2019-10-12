@@ -12,7 +12,6 @@ if(process.env.VUE_APP_PROXY){
         }
      }
 }
-console.log('my_proxy :', my_proxy);
 module.exports = {
   baseUrl: '/', // 构建好的文件输出到哪里
   outputDir: 'dist', // 打包生成目录
