@@ -13,9 +13,9 @@ if(process.env.VUE_APP_PROXY){
      }
 }
 module.exports = {
-  baseUrl: '/', // 构建好的文件输出到哪里
+  // baseUrl: '/', // 构建好的文件输出到哪里(页面空白的话改为./)
   outputDir: 'dist', // 打包生成目录
-  publicPath: './',//index相对资源存放的位置
+  publicPath: './',//同 baseUrl 但比它优先级高
   lintOnSave: true, // 使用带有浏览器内编译器的完整构建版本 
   runtimeCompiler: false, // babel-loader默认会跳过`node_modules`依赖. // 通过这个选项可以显示转译一个依赖
   transpileDependencies: [
