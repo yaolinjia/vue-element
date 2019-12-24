@@ -3,7 +3,7 @@ if(process.env.VUE_APP_PROXY){
   let my_url=process.env.VUE_APP_BASE_URL
     my_proxy={
       '/api': {
-         target: my_url, //这里后台的地址模拟的;应该填写你们真实的后台接口
+         target: my_url+"/api", //这里后台的地址模拟的;应该填写你们真实的后台接口
          ws: true,
          changOrigin: true, //允许跨域
          pathRewrite: {
