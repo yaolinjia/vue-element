@@ -1,13 +1,17 @@
 import axios from 'axios'
-import { MessageBox, Message } from 'element-ui'
+import {
+  Loading,
+  MessageBox,
+  Message
+} from 'element-ui'
 
 const service = axios.create({
   //默认请求路径
-  baseURL:process.env.VUE_APP_PROXY?null: process.env.VUE_APP_BASE_URL,// url = base url + request url
+  baseURL: process.env.VUE_APP_PROXY ? null : process.env.VUE_APP_BASE_URL, // url = base url + request url
 
   //请求多久延时
-  timeout: 5000, 
-  
+  timeout: 5000,
+
   // 设置请求头
   // headers: {
   //   'Content-Type': 'application/json'
@@ -19,8 +23,8 @@ let loadingInstance;
 service.interceptors.request.use(
   config => {
     //启用加载
-    loadingInstance= Loading.service()
-    return config;//避免报错
+    loadingInstance = Loading.service()
+    return config; //避免报错
   },
   error => {
 
@@ -30,7 +34,7 @@ service.interceptors.request.use(
 // 请求拦截---请求后
 service.interceptors.response.use(
 
-  response => {   
+  response => {
     //关闭加载动画
     loadingInstance.close();
     //请求成功的code
@@ -58,7 +62,7 @@ service.interceptors.response.use(
     }
   },
   error => {
-    console.log('err' + error) 
+    console.log('err' + error)
     Message({
       message: error.message,
       type: 'error',
