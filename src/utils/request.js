@@ -62,6 +62,8 @@ service.interceptors.response.use(
     }
   },
   error => {
+    //关闭加载动画
+    loadingInstance.close();
     console.log('err' + error)
     Message({
       message: error.message,
