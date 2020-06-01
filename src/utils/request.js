@@ -42,21 +42,20 @@ service.interceptors.response.use(
     //成功且需要提示的code
     const msgCode = [6, 15, 13]
     // 根据后台的code判断请求状态
-
     if (succeedCode.includes(res.message.code)) {
       return res
     } else if (msgCode.includes(res.message.code)) {
       Message({
         message: res.message.msg || 'success',
         type: 'success',
-        duration: 5 * 1000
+        duration: 3 * 1000
       })
       return res
     } else {
       Message({
         message: res.message.msg || 'warning',
         type: 'warning',
-        duration: 5 * 1000
+        duration: 3 * 1000
       })
       return Promise.reject(new Error(res.message || 'Error'))
     }
@@ -68,7 +67,7 @@ service.interceptors.response.use(
     Message({
       message: error.message,
       type: 'error',
-      duration: 5 * 1000
+      duration: 3 * 1000
     })
     return Promise.reject(error)
   }
