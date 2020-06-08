@@ -35,6 +35,8 @@ service.interceptors.request.use(
 service.interceptors.response.use(
 
   response => {
+    const res = response.data
+
     //关闭加载动画
     loadingInstance.close();
     //请求成功的code
@@ -57,7 +59,9 @@ service.interceptors.response.use(
         type: 'warning',
         duration: 3 * 1000
       })
-      return Promise.reject(new Error(res.message || 'Error'))
+      // return Promise.reject(new Error(res.message || 'Error'))
+      return Promise.reject(res.message)
+
     }
   },
   error => {

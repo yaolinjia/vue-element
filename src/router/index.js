@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-
+import home from './modules/home.js'
 Vue.use(Router)
 
 export default new Router({
@@ -14,6 +14,7 @@ export default new Router({
         keepAlive: true
       },
     },
+    ...home
   ],
 
   //控制滚动条是否滚动到顶部
