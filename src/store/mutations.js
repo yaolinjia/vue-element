@@ -1,6 +1,6 @@
 const mutations = {
     setInfos(state,getInfo){
-        state.userInfos=getInfo
+        state.userInfo=getInfo
       }
 }
 export default mutations

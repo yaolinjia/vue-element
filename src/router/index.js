@@ -8,13 +8,28 @@ export default new Router({
   base: "/",
   routes: [{
       path: '/',
+      redirect: '/Home'
+    },
+    {
+      path: '/About',
+      name: 'About',
+      component: () => import("@/views/About"),
+      meta: {
+        keepAlive: true
+      }
+    },
+    {
+      path: '/Home',
       name: 'Home',
       component: () => import("@/views/Home"),
+      redirect:"/Home/HomePage",
       meta: {
         keepAlive: true
       },
+      children: [
+        ...home
+      ]
     },
-    ...home
   ],
 
   //控制滚动条是否滚动到顶部
