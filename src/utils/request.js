@@ -59,7 +59,7 @@ service.interceptors.response.use(
         type: 'warning',
         duration: 3 * 1000
       })
-      // return Promise.reject(new Error(res.message || 'Error'))
+      //上线后这个可以不需要
       return Promise.reject(res.message)
 
     }
