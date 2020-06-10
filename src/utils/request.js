@@ -7,15 +7,15 @@ import {
 
 const service = axios.create({
   //默认请求路径
-  baseURL: process.env.VUE_APP_PROXY ? null : process.env.VUE_APP_BASE_URL, // url = base url + request url
+  baseURL: process.env.VUE_APP_PROXY ? null : process.env.VUE_APP_BASE_URL,
 
   //请求多久延时
   timeout: 5000,
 
   // 设置请求头
-  // headers: {
-  //   'Content-Type': 'application/json'
-  // }
+  headers: {
+    'Content-Type': 'application/json'
+  }
 })
 //加载动画
 let loadingInstance;
@@ -24,7 +24,7 @@ service.interceptors.request.use(
   config => {
     //启用加载
     loadingInstance = Loading.service()
-    return config; //避免报错
+    return config;
   },
   error => {
 
@@ -61,7 +61,6 @@ service.interceptors.response.use(
       })
       //上线后这个可以不需要
       return Promise.reject(res.message)
-
     }
   },
   error => {

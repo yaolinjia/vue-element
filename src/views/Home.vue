@@ -2,23 +2,24 @@
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png" />
     <HelloWorld msg="Welcome to Your Vue.js App" />
-    <router-view/>
+    <router-view />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+//引入接口模块
 import { test } from "@/api/home";
+//引入工具包模块
 import { getToken } from "@/utils/auth.js";
+//使用vuex
 import { mapGetters } from "vuex";
 export default {
   name: "home",
   components: {
-    HelloWorld
+    HelloWorld: () => import("@/components/HelloWorld.vue")
   },
   computed: {
-    ...mapGetters(['testInfo'])
+    ...mapGetters(["testInfo"])
   },
   created() {
     test().then(res => {
