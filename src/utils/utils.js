@@ -27,3 +27,25 @@ const regCheckNum = function (str) {
 const regEmail = function regEmail(str){
 	return !RegExp(/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/).test(str);
 }
+//判断对象是否为空
+const object_dede=function (params) {
+    let flag = true;
+   
+    for(var key in params){
+      if(params[key] != '0' && !params[key]){
+        this.$vux.toast.text('请完善数据!', 'middle');
+        return false; // 终止程序
+      }
+    }
+   
+    return flag;
+  }
+  export default{
+      regUid,
+      regName,
+      regIDC,
+      regPhone,
+      regCheckNum,
+      regEmail,
+      object_dede
+  }

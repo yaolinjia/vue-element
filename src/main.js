@@ -5,6 +5,11 @@ import store from './store'
 
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+
+//注册全局工具包
+import utils from "@/utils/utils"
+Vue.prototype.$object_dede = utils.object_dede
+
 Vue.use(ElementUI);
 
 Vue.config.productionTip = false
