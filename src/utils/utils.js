@@ -24,28 +24,28 @@ const regCheckNum = function (str) {
 }
 
 //匹配邮箱格式
-const regEmail = function regEmail(str){
+const regEmail = function (str){
 	return !RegExp(/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/).test(str);
 }
 //判断对象是否为空
 const object_dede=function (params) {
-    let flag = true;
-   
-    for(var key in params){
-      if(params[key] != '0' && !params[key]){
-        this.$vux.toast.text('请完善数据!', 'middle');
-        return false; // 终止程序
-      }
+  let flag = true;
+ 
+  for(var key in params){
+    if(params[key] != '0' && !params[key]){
+      this.$message.warning("错了哦，这是一条错误消息");
+      return false; // 终止程序
     }
-   
-    return flag;
   }
-  export default{
-      regUid,
-      regName,
-      regIDC,
-      regPhone,
-      regCheckNum,
-      regEmail,
-      object_dede
-  }
+ 
+  return flag;
+}
+export default{
+    regUid,
+    regName,
+    regIDC,
+    regPhone,
+    regCheckNum,
+    regEmail,
+    object_dede
+}
