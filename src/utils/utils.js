@@ -1,3 +1,5 @@
+import {Message} from 'element-ui'
+
 //工具包
 
 //正则匹配
@@ -33,7 +35,7 @@ const object_dede=function (params) {
  
   for(var key in params){
     if(params[key] != '0' && !params[key]){
-      this.$message.warning("错了哦，这是一条错误消息");
+      Message.warning("错了哦，这是一条错误消息");
       return false; // 终止程序
     }
   }
