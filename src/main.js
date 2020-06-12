@@ -8,7 +8,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 
 //注册全局工具包
 import utils from "@/utils/utils"
-Vue.prototype.$object_dede = utils.object_dede
+Vue.prototype.$utils = utils
 
 Vue.use(ElementUI);
 
