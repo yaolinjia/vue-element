@@ -11,7 +11,10 @@ const service = axios.create({
 
   //请求多久延时
   timeout: 5000,
-
+  // 延时后重新请求次数
+  retry: 3,
+  //延时后重新请求间隔
+  retryInterval: 1000,
   // 设置请求头
   headers: {
     'Content-Type': 'application/json'
