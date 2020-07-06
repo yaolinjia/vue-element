@@ -7,7 +7,7 @@ import {
 
 const service = axios.create({
   //默认请求路径
-  baseURL: process.env.VUE_APP_PROXY ? null : process.env.VUE_APP_BASE_URL,
+  baseURL:  JSON.parse(process.env.VUE_APP_PROXY) ? null : process.env.VUE_APP_BASE_URL,
 
   //请求多久延时
   timeout: 5000,
