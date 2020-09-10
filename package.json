@@ -5,7 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve --mode development",
     "build": "vue-cli-service build --mode production",
-    "build_test": "vue-cli-service build --mode testing",
+    "build-test": "vue-cli-service build --mode testing",
     "lint": "vue-cli-service lint",
     "deploy": "npm run build && node ./deploy"
   },
