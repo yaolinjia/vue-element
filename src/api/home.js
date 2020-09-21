@@ -2,7 +2,7 @@ import request from '@/utils/request'
 
 export function test(data=null) {
   return request({
-    url: '/api/goods/moduleGoodsList',
+    url: '/topic_collect/collect',
     method: 'post',
     data
   })

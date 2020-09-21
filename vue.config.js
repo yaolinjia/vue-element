@@ -1,13 +1,13 @@
-let my_proxy = false
+let now_proxy = false
 if (JSON.parse(process.env.VUE_APP_PROXY)) {
-  let my_url = process.env.VUE_APP_BASE_URL
-  my_proxy = {
-    '/api': {
-      target: my_url + "/api", //这里后台的地址模拟的;应该填写你们真实的后台接口
+  let now_url = process.env.VUE_APP_BASE_URL
+  now_proxy = {
+    '/v1': {
+      target: now_url + "/v1", //这里后台的地址模拟的;应该填写你们真实的后台接口
       ws: true,
       changOrigin: true, //允许跨域
       pathRewrite: {
-        '^/api': '' //请求的时候使用这个api就可以
+        '^/v1': '' //请求的时候使用这个api就可以
       }
     }
   }
@@ -40,7 +40,7 @@ module.exports = {
     port: 8088,
     https: false,
     hotOnly: false,
-    proxy: my_proxy // string | Object
+    proxy: now_proxy // string | Object
     // before: app => {}
   }, // 第三方插件配置
 
